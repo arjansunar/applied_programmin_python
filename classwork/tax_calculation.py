@@ -5,20 +5,30 @@ print(
                         Income Tax Calculation System
 
                             Lazimpat. Kathmandu
-    _________________________________________________________________________
+____________________________________________________________________________________
     '''
 )
 current_date= datetime.date.today()
 print(f'\t\t\tWelcome to the income Tax Calculation System \t\t\t{current_date}')
-print("________________________________________________________________________")
+print("_____________________________________________________________________________")
 
-name = input("Enter your name: ")
-address = input("Enter your address: ")
-age = input("Enter your age: ")
- 
-is_married= input("Are you married or unmarried(y/n):: ")
-income = int(input("Enter the monthly income:: "))
-print("________________________________________________________________________")
+
+no_of_customer= int(input("Enter the number of customer: "))
+
+name=[]
+age=[]
+address=[]
+is_married=[]
+income=[]
+
+for i in range(no_of_customer):
+    name.append(input(f'Enter your name[{i+1}]: ' ))
+    address.append(input(f'Enter your address[{i+1}]: '))
+    age.append(input(f'Enter your age:[{i+1}] '))
+    
+    is_married.append(input(f'Are you married or unmarried(y/n)[{i+1}]:: '))
+    income.append(int(input(f'Enter the monthly income::[{i+1}] ')))
+    print("________________________________________________________________________")
 
 def get_tax_amount(amount,rate):
     return (amount*rate)/100
@@ -91,11 +101,14 @@ def tax_calc_for_married_person(income):
 # print(f'tax for 2000000:: {tax_calc(2000000)}, expected:: 444000' )
 # print(f'tax for 2500000:: {tax_calc(2500000)}, expected:: 624000' )
 
-res_tax=0
-if (is_married.lower()=='y'):
-    res_tax = tax_calc_for_married_person(income*12)
-else: 
-    res_tax = tax_calc(income*12)
+for i in range(no_of_customer):
+    res_tax=0
+    if (is_married[i].lower()=='y'):
+        # print(f'income is :{income[i]}')
+        res_tax = tax_calc_for_married_person((income[i])*12)
+    else: 
+        # print(f'income is :{income[i]}')
+        res_tax = tax_calc((income[i])*12)
+    print(f'The annual tax for {name[i]} of {age[i]} years old in {address[i]} is:: {res_tax} ')
 
 
-print(f'\nThe final tax is {res_tax} annually')
