@@ -1,17 +1,17 @@
 import datetime
 
-print(
-    '''
+output = '''
                         Income Tax Calculation System
 
                             Lazimpat. Kathmandu
 ____________________________________________________________________________________
     '''
-)
-current_date= datetime.date.today()
-print(f'\t\t\tWelcome to the income Tax Calculation System \t\t\t{current_date}')
-print("_____________________________________________________________________________")
 
+current_date= datetime.date.today()
+output+=f'\n\t\t\tWelcome to the income Tax Calculation System \t\t\t{current_date}'
+output+="\n_____________________________________________________________________________\n"
+
+print(output)
 
 no_of_customer= int(input("Enter the number of customer: "))
 
@@ -109,6 +109,9 @@ for i in range(no_of_customer):
     else: 
         # print(f'income is :{income[i]}')
         res_tax = tax_calc((income[i])*12)
+    output+=f'\nThe annual tax for {name[i]} of {age[i]} years old in {address[i]} is:: {res_tax} '
     print(f'The annual tax for {name[i]} of {age[i]} years old in {address[i]} is:: {res_tax} ')
 
 
+f = open("./output.txt", "w")
+f.write(output)
