@@ -1,3 +1,5 @@
+print("Developed By: Arjan Gahatraj Sunar\n")
+
 def write_to_file(filepath,output):
     with open(filepath,'w') as f:
         f.write(output)
